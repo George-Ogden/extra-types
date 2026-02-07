@@ -13,11 +13,13 @@ from .types import Char
         (int | str, 5, True),
         (str | None, 5, False),
         (str, 5, False),
-        (None, 5, True),
+        (None, 5, False),
         (int | str, None, False),
         (str | None, "abc", True),
         (Char, "a", True),
         (Char, "ab", False),
+        (None, "ab", False),
+        (None, None, True),
     ],
 )
 def test_strict_cast(typ: object, expr: object, passes: bool) -> None:

@@ -18,3 +18,11 @@ d + "oops"  # type: ignore [operator]
 
 e = strict_cast(Literal[5], 10)
 e + 4
+
+f = strict_cast(None, 10)
+f + "oops"  # type: ignore [operator]
+
+
+g = strict_cast((int, str), 10)
+g + ()  # noqa: RUF005
+g + 5
