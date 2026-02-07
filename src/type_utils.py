@@ -33,3 +33,9 @@ def _dynamic_type_check(typ: object, expr: Any, /) -> bool:
         return isinstance(expr, cast(type, typ))
     except TypeError:
         return True
+
+
+def strict_not_none[T](expr: T | None, /) -> Copied[T]:
+    if expr is None:
+        raise TypeError(f"{expr} is {None}")
+    return expr
