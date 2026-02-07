@@ -1,5 +1,5 @@
 [project]
-name = "extra types"
+name = "extra-types"
 requires-python = ">=3.12,<3.15"
 authors = [{name = "George Ogden"}]
 license = {file = "LICENSE"}
