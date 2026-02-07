@@ -1,10 +1,10 @@
-import contextlib
 import enum
 from typing import Any
 
 import pytest
 
 from . import Nat
+from .test_utils import instantiation_test_body, isinstance_test_body, issubclass_test_body
 
 
 class Bull(enum.IntEnum):
@@ -16,7 +16,7 @@ class Bull(enum.IntEnum):
     "typ, expected", [(int, True), (float, False), (bool, False), (Bull, False)]
 )
 def test_issubclass(typ: type, expected: bool) -> None:
-    assert issubclass(typ, Nat) == expected
+    issubclass_test_body(Nat, typ, expected)
 
 
 @pytest.mark.parametrize(
@@ -32,7 +32,7 @@ def test_issubclass(typ: type, expected: bool) -> None:
     ],
 )
 def test_isinstance(obj: object, expected: bool) -> None:
-    assert isinstance(obj, Nat) == expected
+    isinstance_test_body(Nat, obj, expected)
 
 
 @pytest.mark.parametrize(
@@ -40,9 +40,4 @@ def test_isinstance(obj: object, expected: bool) -> None:
     [(1, 1), ("1", 1), (-1, TypeError), ("-1", TypeError), (False, 0), (None, TypeError)],
 )
 def test_instantiation(arg: Any, expected: object | type[BaseException]) -> None:
-    with (
-        pytest.raises(expected)
-        if isinstance(expected, type) and issubclass(expected, BaseException)
-        else contextlib.nullcontext()
-    ):
-        assert Nat(arg) == expected
+    instantiation_test_body(Nat, arg, expected)
