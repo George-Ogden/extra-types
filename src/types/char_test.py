@@ -1,10 +1,11 @@
 from collections.abc import Sequence
 import enum
+from typing import Any
 
 import pytest
 
 from . import Char
-from .test_utils import isinstance_test_body, issubclass_test_body
+from .test_utils import instantiation_test_body, isinstance_test_body, issubclass_test_body
 
 
 class Bull(enum.IntEnum):
@@ -34,3 +35,24 @@ def test_issubclass(typ: type, expected: bool) -> None:
 )
 def test_isinstance(obj: object, expected: bool) -> None:
     isinstance_test_body(Char, obj, expected)
+
+
+class Invisible:
+    def __str__(self) -> str:
+        return ""
+
+
+@pytest.mark.parametrize(
+    "arg, expected",
+    [
+        (1, "1"),
+        ("a", "a"),
+        ("aa", TypeError),
+        (10, TypeError),
+        (Invisible(), TypeError),
+        (Bull.FAWS, "0"),
+        (Bull.TWOO, "1"),
+    ],
+)
+def test_instantiation(arg: Any, expected: object | type[BaseException]) -> None:
+    instantiation_test_body(Char, arg, expected)

@@ -3,7 +3,7 @@ from typing import cast
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
 
-class Char(DynamicInstantiation, int, metaclass=DynamicCheck):
+class Char(DynamicInstantiation, str, metaclass=DynamicCheck):
     @classmethod
     def _is_instance(cls, instance: object) -> bool:
         return issubclass(type(instance), cls) and len(cast(str, instance)) == 1
