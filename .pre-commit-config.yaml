@@ -2,7 +2,7 @@ default_stages: ["pre-commit"]
 default_install_hook_types: ["pre-commit", "commit-msg"]
 
 ci:
-  skip: [mirror-check]
+  skip: [mirror-check, no-commit-to-branch]
 
 repos:
   - repo: https://github.com/George-Ogden/mirror-rorrim/
@@ -14,6 +14,8 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks/
     rev: v6.0.0
     hooks:
+      - id: no-commit-to-branch
+        fail_fast: true
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
