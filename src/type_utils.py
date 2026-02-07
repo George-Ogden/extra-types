@@ -1,10 +1,10 @@
 from typing import Any, cast, overload
 
-__all__ = ["Copied", "Modified", "New", "strict_cast"]
+__all__ = ["Modified", "New", "Unmodified", "strict_cast"]
 
 
-type Copied[T] = T
 type Modified[T] = T
+type Unmodified[T] = T
 type New[T] = T
 
 
@@ -20,7 +20,7 @@ def strict_cast(typ: None, expr: Any, /) -> None: ...
 def strict_cast(typ: object, expr: Any, /) -> Any: ...
 
 
-def strict_cast[T](typ: object, expr: T, /) -> Copied[T]:
+def strict_cast[T](typ: object, expr: T, /) -> Unmodified[T]:
     """
     Determine whether an object is of a given type at runtime.
     This method is currently very limited in its ability to express types;
@@ -41,7 +41,7 @@ def _dynamic_type_check(typ: object, expr: Any, /) -> bool:
         return True
 
 
-def strict_not_none[T](expr: T | None, /) -> Copied[T]:
+def strict_not_none[T](expr: T | None, /) -> Unmodified[T]:
     """
     Check that an expression is not None.
     If it is None, this raises a TypeError.
