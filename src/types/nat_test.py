@@ -35,9 +35,29 @@ def test_isinstance(obj: object, expected: bool) -> None:
     isinstance_test_body(Nat, obj, expected)
 
 
+class Negated:
+    def __init__(self, x: int, /) -> None:
+        self.x = x
+
+    def __int__(self) -> int:
+        return -self.x
+
+
 @pytest.mark.parametrize(
     "arg, expected",
-    [(1, 1), ("1", 1), (-1, TypeError), ("-1", TypeError), (False, 0), (None, TypeError)],
+    [
+        (1, 1),
+        ("1", 1),
+        (-1, TypeError),
+        ("-1", TypeError),
+        (False, 0),
+        (None, TypeError),
+        (Bull.FAWS, 0),
+        (Bull.TWOO, 1),
+        (Negated(1), TypeError),
+        (Negated(-2), 2),
+        (Negated(0), 0),
+    ],
 )
 def test_instantiation(arg: Any, expected: object | type[BaseException]) -> None:
     instantiation_test_body(Nat, arg, expected)
