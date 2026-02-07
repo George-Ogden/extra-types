@@ -1,6 +1,11 @@
 from typing import Any, cast, overload
 
-__all__ = ["strict_cast"]
+__all__ = ["Copied", "Modified", "New", "strict_cast"]
+
+
+type Copied[T] = T
+type Modified[T] = T
+type New[T] = T
 
 
 @overload
@@ -15,7 +20,7 @@ def strict_cast(typ: None, expr: Any, /) -> None: ...
 def strict_cast(typ: object, expr: Any, /) -> Any: ...
 
 
-def strict_cast(typ: object, expr: Any, /) -> Any:
+def strict_cast[T](typ: object, expr: T, /) -> Copied[T]:
     if not _dynamic_type_check(typ, expr):
         raise TypeError(f"{expr} is not an instance of {typ}")
     return expr
