@@ -30,11 +30,22 @@ class DynamicCheck(type, abc.ABC):
     def _is_subclass(cls, instance: object) -> bool: ...
 
 
+class DynamicInstantiation:
+    def __new__(cls, *args: Any, **kwargs: Any) -> Any:
+        [base_cls, *_] = (
+            base_cls for base_cls in cls.__bases__ if not issubclass(base_cls, DynamicInstantiation)
+        )
+        obj = super().__new__(base_cls, *args, **kwargs)
+        if not isinstance(obj, cls):
+            raise TypeError(f"{obj} is not an instance of {cls.__name__}")
+        return obj
+
+
 if TYPE_CHECKING:
     Nat = int
 else:
 
-    class Nat(int, metaclass=DynamicCheck):
+    class Nat(DynamicInstantiation, int, metaclass=DynamicCheck):
         @classmethod
         def _is_instance(cls, instance: object) -> bool:
             return isinstance(instance, int) and instance >= 0
