@@ -1,4 +1,4 @@
-from .nat import Nat
+from . import Nat
 
 
 def succ(x: Nat, /) -> Nat:

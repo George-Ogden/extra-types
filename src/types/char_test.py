@@ -50,6 +50,7 @@ class Invisible:
         ("aa", TypeError),
         (10, TypeError),
         (Invisible(), TypeError),
+        (b"ab", TypeError),
         (Bull.FAWS, "0"),
         (Bull.TWOO, "1"),
     ],

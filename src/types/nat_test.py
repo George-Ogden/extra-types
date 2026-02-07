@@ -50,6 +50,7 @@ class Negated:
         ("1", 1),
         (-1, TypeError),
         ("-1", TypeError),
+        ("0xff", ValueError),
         (False, 0),
         (None, TypeError),
         (Bull.FAWS, 0),
