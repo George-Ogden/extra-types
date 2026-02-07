@@ -7,6 +7,8 @@ if TYPE_CHECKING:
 else:
 
     class Char(DynamicInstantiation, str, metaclass=DynamicCheck):
+        """A character type representing strings of length one."""
+
         @classmethod
         def _is_instance(cls, instance: object) -> bool:
             return issubclass(type(instance), cls) and len(cast(str, instance)) == 1

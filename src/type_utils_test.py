@@ -20,6 +20,9 @@ from .types import Char
         (Char, "ab", False),
         (None, "ab", False),
         (None, None, True),
+        (Char | None, "a", True),
+        (Char | None, "ab", False),
+        (Char | None, None, True),
     ],
 )
 def test_strict_cast(typ: object, expr: object, passes: bool) -> None:

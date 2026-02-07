@@ -7,6 +7,8 @@ if TYPE_CHECKING:
 else:
 
     class Nat(DynamicInstantiation, int, metaclass=DynamicCheck):
+        """A natural number type representing integers greater than or equal to zero."""
+
         @classmethod
         def _is_instance(cls, instance: object) -> bool:
             return issubclass(type(instance), cls) and instance >= 0
