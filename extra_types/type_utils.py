@@ -1,11 +1,8 @@
 from typing import Any, cast, overload
 
-__all__ = ["Modified", "New", "Unmodified", "strict_cast"]
+from .types import Unmodified
 
-
-type Modified[T] = T
-type Unmodified[T] = T
-type New[T] = T
+__all__ = ["strict_cast", "strict_not_none"]
 
 
 @overload
