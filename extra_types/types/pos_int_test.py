@@ -3,7 +3,7 @@ from typing import Any
 
 import pytest
 
-from . import Nat
+from . import PosInt
 from .test_utils import Negated, instantiation_test_body, isinstance_test_body, issubclass_test_body
 
 
@@ -16,14 +16,16 @@ class Bull(enum.IntEnum):
     "typ, expected", [(int, True), (float, False), (bool, False), (Bull, False)]
 )
 def test_issubclass(typ: type, expected: bool) -> None:
-    issubclass_test_body(Nat, typ, expected)
+    issubclass_test_body(PosInt, typ, expected)
 
 
 @pytest.mark.parametrize(
     "obj, expected",
     [
         (1, True),
-        (0, True),
+        (2, True),
+        (998244353, True),
+        (0, False),
         (-1, False),
         (1.5, False),
         ("1", False),
@@ -32,7 +34,7 @@ def test_issubclass(typ: type, expected: bool) -> None:
     ],
 )
 def test_isinstance(obj: object, expected: bool) -> None:
-    isinstance_test_body(Nat, obj, expected)
+    isinstance_test_body(PosInt, obj, expected)
 
 
 @pytest.mark.parametrize(
@@ -43,14 +45,14 @@ def test_isinstance(obj: object, expected: bool) -> None:
         (-1, TypeError),
         ("-1", TypeError),
         ("0xff", ValueError),
-        (False, 0),
+        (False, TypeError),
         (None, TypeError),
-        (Bull.FAWS, 0),
+        (Bull.FAWS, TypeError),
         (Bull.TWOO, 1),
         (Negated(1), TypeError),
         (Negated(-2), 2),
-        (Negated(0), 0),
+        (Negated(0), TypeError),
     ],
 )
 def test_instantiation(arg: Any, expected: object | type[BaseException]) -> None:
-    instantiation_test_body(Nat, arg, expected)
+    instantiation_test_body(PosInt, arg, expected)
