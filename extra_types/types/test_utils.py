@@ -18,3 +18,11 @@ def instantiation_test_body(typ: type, arg: object, expected: object | type[Base
         else contextlib.nullcontext()
     ):
         assert typ(arg) == expected
+
+
+class Negated:
+    def __init__(self, x: int, /) -> None:
+        self.x = x
+
+    def __int__(self) -> int:
+        return -self.x
