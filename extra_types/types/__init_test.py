@@ -1,6 +1,6 @@
 import itertools
 
-from .. import types as types
+from .. import types
 from ._dynamic import DynamicInstantiation
 from .conftest import mcls_instances
 
