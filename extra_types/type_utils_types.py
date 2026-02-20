@@ -39,5 +39,5 @@ k[0] + 2  # type: ignore [operator]
 k[0] + "3"
 
 
-l: None = None  # noqa: E741
+l: None = None
 m = strict_not_none(l)  # type: ignore [var-annotated]
