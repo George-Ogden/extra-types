@@ -7,3 +7,4 @@ mypy
 prek
 pytest
 pytest-timeout
+ruff
