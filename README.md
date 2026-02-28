@@ -2,7 +2,7 @@
 
 Extra types and type utilities for Python.
 It provides some useful types that can be easily integrated into your code.
-Documentation available at (TODO)
+Documentation available at https://george-ogden.github.io/extra-types/
 
 ## Example
 
