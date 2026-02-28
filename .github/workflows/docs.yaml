@@ -22,7 +22,9 @@ jobs:
           python-version: "3.13"
 
       - name: Install dependencies
-        run: uv pip install -r requirements-dev.txt
+        run: |
+          pip install uv
+          uv pip install -r requirements-dev.txt --system
 
       - name: Deploy to GitHub
         run: mkdocs gh-deploy --force
