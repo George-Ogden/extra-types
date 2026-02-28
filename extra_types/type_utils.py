@@ -21,8 +21,8 @@ def strict_cast[T](typ: object, expr: T, /) -> Unmodified[T]:
     """
     Determine whether an object is of a given type at runtime.
     This method is currently very limited in its ability to express types;
-    as a result, it will produce False positives, such as with Literal types.
-    If the type does not match, this raises a TypeError.
+    as a result, it will produce false-positives, such as with `Literal` types.
+    If the type does not match, this raises a `TypeError`.
     """
     if not _dynamic_type_check(typ, expr):
         raise TypeError(f"{expr} is not an instance of {typ}")
@@ -40,8 +40,8 @@ def _dynamic_type_check(typ: object, expr: Any, /) -> bool:
 
 def strict_not_none[T](expr: T | None, /) -> Unmodified[T]:
     """
-    Check that an expression is not None.
-    If it is None, this raises a TypeError.
+    Check that an expression is not `None`.
+    If it is `None`, this raises a `TypeError`.
     """
     if expr is None:
         raise TypeError(f"{expr} is {None}")
