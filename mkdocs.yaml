@@ -34,4 +34,5 @@ plugins:
             show_root_heading: true
 nav:
   - Home: index.md
-  - API Reference: api/
+  - Types: types.md
+  - Type Utils: type_utils.md

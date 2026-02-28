@@ -1,5 +1,8 @@
-# Welcome to extra-types documentation!
+# extra-types
 
 This is the home page for `extra-types` documentation.
 
-You can find the API reference in the [API Reference](api/) section.
+See information about types in [types](types/)
+or information about type utils in [type_utils](types_utils/).
+
+Install with `uv pip install git+https://github.com/George-Ogden/extra-types`.
