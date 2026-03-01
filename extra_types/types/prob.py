@@ -1,4 +1,11 @@
-from typing import TYPE_CHECKING, TypeIs, cast
+import sys
+from typing import TYPE_CHECKING, cast
+
+if sys.version_info >= (3, 13):
+    from typing import TypeIs
+else:
+    from typing_extensions import TypeIs
+
 
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
