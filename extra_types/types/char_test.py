@@ -8,7 +8,7 @@ from . import Char
 from .test_utils import instantiation_test_body, isinstance_test_body, issubclass_test_body
 
 
-class Bull(enum.IntEnum):
+class Bull(enum.StrEnum):
     FAWS = "0"
     TWOO = "1"
 

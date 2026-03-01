@@ -1,12 +1,14 @@
-from typing import Any, cast, overload
+from typing import Any, TypeVar, cast, overload
 
 from .types import Unmodified
 
 __all__ = ["strict_cast", "strict_not_none"]
 
+_T = TypeVar("_T")
+
 
 @overload
-def strict_cast[T](typ: type[T], expr: Any, /) -> T: ...
+def strict_cast(typ: type[_T], expr: Any, /) -> _T: ...
 
 
 @overload
@@ -17,7 +19,7 @@ def strict_cast(typ: None, expr: Any, /) -> None: ...
 def strict_cast(typ: object, expr: Any, /) -> Any: ...
 
 
-def strict_cast[T](typ: object, expr: T, /) -> Unmodified[T]:
+def strict_cast(typ: object, expr: _T, /) -> Unmodified[_T]:
     """
     Determine whether an object is of a given type at runtime.
     This method is currently very limited in its ability to express types;
@@ -38,7 +40,7 @@ def _dynamic_type_check(typ: object, expr: Any, /) -> bool:
         return True
 
 
-def strict_not_none[T](expr: T | None, /) -> Unmodified[T]:
+def strict_not_none(expr: _T | None, /) -> Unmodified[_T]:
     """
     Check that an expression is not `None`.
     If it is `None`, this raises a `TypeError`.
