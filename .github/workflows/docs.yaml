@@ -10,21 +10,5 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-
-      - name: Install dependencies
-        run: |
-          pip install uv
-          uv pip install -r requirements-dev.txt --system
-
-      - name: Deploy to GitHub
-        run: mkdocs gh-deploy --force
+  deploy-docs:
+    uses: George-Ogden/actions/.github/workflows/deploy-mkdocs.yaml@v4.3.0
