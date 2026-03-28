@@ -41,13 +41,13 @@ def generate_positive_integer() -> PosInt:
 ### Quick Install
 
 ```bash
-uv pip install git+https://github.com/George-Ogden/extra-types
+uv pip install extra-type-helpers
 ```
 
 ### Slow Install
 
 ```bash
-pip install git+https://github.com/George-Ogden/extra-types
+pip install extra-type-helpers
 ```
 
 ## Bugs/Feedback
