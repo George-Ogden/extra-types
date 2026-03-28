@@ -1,0 +1,4 @@
+-r requirements-dev.txt
+mkdocs
+mkdocs-material
+mkdocstrings[python]
