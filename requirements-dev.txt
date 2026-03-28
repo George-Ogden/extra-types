@@ -6,8 +6,9 @@ inline-snapshot
 mkdocs
 mkdocs-material
 mkdocstrings[python]
-mypy
+mypy==1.19.1
 prek
-pytest
+py-spy
+pytest>=9.0.0
 pytest-timeout
-ruff
+ruff==0.15.8
