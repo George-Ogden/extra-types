@@ -1,9 +1,9 @@
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, TypeAlias, cast
 
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
 if TYPE_CHECKING:
-    Char = str
+    Char: TypeAlias = str
 else:
 
     class Char(DynamicInstantiation, str, metaclass=DynamicCheck):

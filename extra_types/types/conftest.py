@@ -8,7 +8,7 @@ install()
 
 original_new = DynamicCheck.__new__
 
-mcls_instances = []
+mcls_instances: list[type[type]] = []
 
 
 def mock_new(*args: Any, **kwargs: Any) -> Any:

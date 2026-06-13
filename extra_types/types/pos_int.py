@@ -1,9 +1,9 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypeAlias
 
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
 if TYPE_CHECKING:
-    PosInt = int
+    PosInt: TypeAlias = int
 else:
 
     class PosInt(DynamicInstantiation, int, metaclass=DynamicCheck):

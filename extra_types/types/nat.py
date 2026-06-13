@@ -1,9 +1,9 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypeAlias
 
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
 if TYPE_CHECKING:
-    Nat = int
+    Nat: TypeAlias = int
 else:
 
     class Nat(DynamicInstantiation, int, metaclass=DynamicCheck):
