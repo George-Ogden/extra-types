@@ -1,5 +1,5 @@
 import sys
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, TypeAlias, cast
 
 if sys.version_info >= (3, 13):
     from typing import TypeIs
@@ -10,7 +10,7 @@ else:
 from ._dynamic import DynamicCheck, DynamicInstantiation
 
 if TYPE_CHECKING:
-    Prob = float
+    Prob: TypeAlias = float
 else:
 
     class Prob(DynamicInstantiation, float, metaclass=DynamicCheck):
