@@ -1,7 +1,7 @@
 [project]
 name = "extra-type-helpers"
 readme = "README.md"
-requires-python = ">=3.11,<3.15"
+requires-python = ">=3.11,<3.16"
 license-files = ["LICENSE"]
 authors = [{ name = "George Ogden" }]
 dependencies = [

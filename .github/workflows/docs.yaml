@@ -13,4 +13,4 @@ jobs:
   deploy-docs:
     uses: George-Ogden/actions/.github/workflows/deploy-mkdocs.yaml@v5.1.2
     with:
-      python-version: "3.14"
+      python-version: "3.15"
