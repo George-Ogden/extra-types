@@ -1,6 +1,7 @@
 import contextlib
 
 import pytest
+from typing_extensions import TypeForm
 
 from .type_utils import strict_cast, strict_not_none
 from .types import Char
@@ -25,7 +26,7 @@ from .types import Char
         (Char | None, None, True),
     ],
 )
-def test_strict_cast(typ: object, expr: object, passes: bool) -> None:
+def test_strict_cast(typ: TypeForm, expr: object, passes: bool) -> None:
     with contextlib.nullcontext() if passes else pytest.raises(TypeError):
         assert strict_cast(typ, expr) is expr
 
