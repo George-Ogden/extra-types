@@ -3,7 +3,7 @@ name: Deploy Docs
 on:
   push:
     branches:
-      - master
+      - m
   workflow_call:
 
 permissions:
@@ -11,4 +11,6 @@ permissions:
 
 jobs:
   deploy-docs:
-    uses: George-Ogden/actions/.github/workflows/deploy-mkdocs.yaml@v4.6.3
+    uses: George-Ogden/actions/.github/workflows/deploy-mkdocs.yaml@v5.1.2
+    with:
+      python-version: "3.14"
