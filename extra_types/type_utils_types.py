@@ -24,7 +24,7 @@ f + "oops"  # type: ignore [operator]
 
 
 g = strict_cast((int, str), 10)
-g + ()  # noqa: RUF005
+g + ()  # ruff: ignore[collection-literal-concatenation]
 g + 5
 
 h: int | None = 5

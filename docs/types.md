@@ -25,10 +25,11 @@ There a few ways to improve this function:
 from extra_types.types import Prob
 from extra_types.type_utils import strict_cast
 
+
 def bernoulli(p: Prob):
-    assert isinstance(p, Prob) # AssertionError
-    p = Prob(p) # TypeError
-    p = strict_cast(Prob, p) # TypeError
+    assert isinstance(p, Prob)  # AssertionError
+    p = Prob(p)  # TypeError
+    p = strict_cast(Prob, p)  # TypeError
 ```
 
 All of these will fail if you use `2.0` as your probability.
@@ -38,12 +39,14 @@ You can also use other libraries, like [`typeguard`](https://typeguard.readthedo
 ```python
 import attrs
 
+
 @attrs.define
 class AgentConfig:
     agent_size: PosInt = attrs.field(validator=attrs.validators.instance_of(PosInt))
 
 
 import typeguard
+
 
 @typeguard.typechecked
 def decrement(x: PosInt) -> Nat:
@@ -54,8 +57,8 @@ Despite what it looks, you cannot create an instance of these classes (unless yo
 Take this sample:
 
 ```python
-p = Prob("0.5") # Checks that p is valid.
-assert type(p) is float # Always True
+p = Prob("0.5")  # Checks that p is valid.
+assert type(p) is float  # Always True
 ```
 
 This makes it compatible with any other code.
