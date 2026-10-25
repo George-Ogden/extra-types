@@ -45,7 +45,6 @@ types = [
   { include-group = "test" },
 ]
 utils = [
-  "extra-type-helpers ; python_full_version >= '3.12'",
   "georges-utils ; python_full_version >= '3.12'",
 ]
 
@@ -65,7 +64,6 @@ exclude = ["test*"]
 "extra_types" = ["py.typed"]
 
 [tool.uv.sources]
-extra-type-helpers = { git = "https://github.com/George-Ogden/extra-types" }
 georges-utils = { git = "https://github.com/George-Ogden/utils" }
 linter = { git = "https://github.com/George-Ogden/linter/" }
 mirror-rorrim = { git = "https://github.com/George-Ogden/mirror-rorrim" }
