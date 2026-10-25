@@ -23,7 +23,7 @@ f = strict_cast(None, 10)
 f + "oops"  # type: ignore [operator]
 
 
-g = strict_cast((int, str), 10)
+g = strict_cast((int, str), 10)  # type: ignore[arg-type,var-annotated]
 g + ()  # ruff: ignore[collection-literal-concatenation]
 g + 5
 

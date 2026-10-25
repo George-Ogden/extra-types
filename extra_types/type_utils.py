@@ -1,25 +1,20 @@
-from typing import Any, TypeVar, cast, overload
+import sys
+from typing import Any, TypeVar, cast
 
 from .types import Unmodified
+
+if sys.version_info >= (3, 15):
+    from typing import TypeForm
+else:
+    from typing_extensions import TypeForm
+
 
 __all__ = ["strict_cast", "strict_not_none"]
 
 _T = TypeVar("_T")
 
 
-@overload
-def strict_cast(typ: type[_T], expr: Any, /) -> _T: ...
-
-
-@overload
-def strict_cast(typ: None, expr: Any, /) -> None: ...
-
-
-@overload
-def strict_cast(typ: object, expr: Any, /) -> Any: ...
-
-
-def strict_cast(typ: object, expr: _T, /) -> Unmodified[_T]:
+def strict_cast(typ: TypeForm[_T], expr: Any, /) -> Unmodified[_T]:
     """
     Determine whether an object is of a given type at runtime.
     This method is currently very limited in its ability to express types;

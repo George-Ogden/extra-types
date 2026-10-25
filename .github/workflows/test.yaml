@@ -12,13 +12,13 @@ jobs:
   run-pytest-lowest:
     uses: George-Ogden/actions/.github/workflows/python-test.yaml@v5.2.0
     with:
-      python-versions: "['3.11','3.12','3.13','3.14']"
+      python-versions: "['3.11','3.12','3.13','3.14', '3.15']"
       pytest-flags: -vv -m "not local"
       package-resolution: lowest-direct
 
   run-highest:
     uses: George-Ogden/actions/.github/workflows/python-test.yaml@v5.2.0
     with:
-      python-versions: "['3.11','3.12','3.13','3.14']"
+      python-versions: "['3.11','3.12','3.13','3.14', '3.15']"
       pytest-flags: -vv -m "not local"
       package-resolution: highest

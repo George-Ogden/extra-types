@@ -12,4 +12,4 @@ jobs:
   run-mypy:
     uses: George-Ogden/actions/.github/workflows/mypy.yaml@v5.1.2
     with:
-      python-version: "3.14"
+      python-version: "3.15"
