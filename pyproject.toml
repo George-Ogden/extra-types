@@ -4,7 +4,9 @@ readme = "README.md"
 requires-python = ">=3.11,<3.15"
 license-files = ["LICENSE"]
 authors = [{ name = "George Ogden" }]
-dependencies = []
+dependencies = [
+  "typing-extensions>=4.16.0 ; python_full_version < '3.13'",
+]
 dynamic = ["version"]
 
 [project.urls]
